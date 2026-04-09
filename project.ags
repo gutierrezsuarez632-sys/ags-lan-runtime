@@ -1,0 +1,10 @@
+project("Billings", func() {
+
+    language("go")
+
+    bounded_context("payments", func() {
+        hexagonal()
+        subcontext("invoices")
+    })
+
+})
