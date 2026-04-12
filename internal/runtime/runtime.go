@@ -10,7 +10,9 @@ type Runtime struct {
 func NewRuntime() *Runtime {
 	r := &Runtime{
 		env: env.NewEnv(),
-		ctx: &Context{},
+		ctx: &Context{
+			Spec: &AGSSpec{Contexts: []*ContextSpec{}},
+		},
 	}
 
 	r.registerBuiltins()
@@ -20,4 +22,8 @@ func NewRuntime() *Runtime {
 
 func (r *Runtime) GetProject() *Project {
 	return r.ctx.Project
+}
+
+func (r *Runtime) GetSpec() *AGSSpec {
+	return r.ctx.Spec
 }
